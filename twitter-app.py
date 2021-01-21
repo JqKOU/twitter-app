@@ -9,9 +9,7 @@ st.write("""
 
 This app predicts whether a Twitter user is a **Programmer** or a **Gamer**.
 
-Data collected from Twitter using Tweepy API with keywords of programmer and gamer: 
-
-[python, java, c++] and [PokemonGo, AnimalCrossing, ACNH] 
+Model is based on data collected from Twitter with keywords of programmer (python, java, c++) and gamer (PokemonGo, AnimalCrossing, ACNH)
 """)
 
 # Reads in saved classification model
@@ -19,16 +17,16 @@ load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
 
 st.subheader('Input your Twitter Description')
 
-description = st.text_input('Input your description here:') 
-List = list(description.split(" "))
+List = st.text_input('Input your description here:') 
+#List = list(description.split())
 
 # Apply model to make predictions
-prediction = load_mnb.predict(List)
-prediction_proba = load_mnb .predict_proba(List)
+prediction = load_mnb.predict(List)[0]
+prediction_proba = load_mnb.predict_proba(List)[0]
 
 st.subheader('Prediction')
 user_type = np.array(['Programmer','Gamer'])
-st.write(user_type [prediction])
+st.write(user_type[prediction])
 
 st.subheader('Prediction Probability')
 st.write(prediction_proba)
