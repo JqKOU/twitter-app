@@ -31,6 +31,7 @@ def token(text):
     text = ' '.join(text) # nice day
     return text
 
+# prediction 
 def user_type(description):
     Type = load_mnb.predict(Token)
     prediction_proba = load_mnb.predict_proba(Token)
@@ -49,26 +50,24 @@ load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
 
 #### APP #####
 st.write("""
-# Twitter User Type Prediction App
+# Twitter User Type Prediction
 
-This app predicts whether a Twitter user is a **Programmer** or a **Gamer** based on the user description.
+This app predicts whether a Twitter user is a **Programmer** or a **Gamer** based on user's description profile.
+
+This model are trained on Twitter users' profile who posted tweets with keywords in [python, java, C++, PokemonGo, AnimalCrossing, ACNH]. 
+
+The first 3 keywords [python, java, C++] capture users that are more likely to be programmers. 💻
+
+The last 3 keywords [PokemonGo, AnimalCrossing, ACNH] captures users that are more likely to be gamers. 🎠
+
 """)
 
-st.subheader("Input the Twitter Description")
-description = st.text_input("input here")
-st.write('your input is ')
+st.subheader("Input the Twitter User Description")
+description = st.text_input(" ")
+
+st.write('👇 click to show/hide')
 Token = [token(description)]
 
 st.subheader('Prediction')
 user_type(description)     
 
-# Apply model to make predictions
-#prediction = load_mnb.predict([token(description)])
-#prediction_proba = load_mnb.predict_proba([token(description)])
-
-#st.subheader('Prediction')
-#user_type = np.array(['Programmer','Gamer'])
-#st.write(user_type[prediction])
-
-#st.subheader('Prediction Probability')
-#st.write(prediction_proba[prediction])
