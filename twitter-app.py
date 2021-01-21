@@ -43,17 +43,18 @@ This app predicts whether a Twitter user is a **Programmer** or a **Gamer** base
 
 st.subheader("Input your Twitter Description")
 description = st.text_input("input your description here")
+Token = [token(description)]
 
 def user_type(description):
-    Type = load_mnb.predict([token(description)])
-    prediction_proba = load_mnb.predict_proba([token(description)])
+    Type = load_mnb.predict(Token)
+    prediction_proba = load_mnb.predict_proba(Token)
     if Type == 0:
-        print ('This user is a programmer')
-        print ('The prediction probability is ', prediction_proba[0])
+        st.write ('This user is a programmer')
+        st.write ('The prediction probability is ', prediction_proba[0])
     elif Type == 1:
-        print('This user is a gamer')
+        st.write('This user is a gamer')
     else:
-        print('invalid prediction')
+        st.write('invalid prediction')
 
 st.subheader('Prediction')
 user_type(description)     
