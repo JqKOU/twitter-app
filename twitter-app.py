@@ -67,6 +67,8 @@ st.subheader('Prediction')
 user_type(description)     
 
 
+st.subheader(" ")
+st.subheader(" ")
 st.subheader("About")
 st.write("""
 This model were trained on Twitter users' profile who posted tweets with keywords in [python, java, C++, PokemonGo, AnimalCrossing, ACNH]. 
