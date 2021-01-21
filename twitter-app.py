@@ -50,7 +50,7 @@ load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
 
 #### APP #####
 st.write("""
-# Twitter User Type Prediction
+# Twitter User Tagging
 
 This app predicts whether a Twitter user is a **Programmer** or a **Gamer** based on user's description profile.
 
