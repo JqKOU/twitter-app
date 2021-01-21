@@ -50,9 +50,10 @@ def user_type(description):
     prediction_proba = load_mnb.predict_proba(Token)
     if Type == 0:
         st.write ('This user is a programmer')
-        st.write ('The prediction probability is ', prediction_proba[0])
+        st.write ('The prediction probability is ', prediction_proba[0][0])
     elif Type == 1:
         st.write('This user is a gamer')
+        st.write ('The prediction probability is ', prediction_proba[1][0])
     else:
         st.write('invalid prediction')
 
