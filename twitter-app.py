@@ -45,9 +45,11 @@ st.subheader("Input your Twitter Description")
 description = st.text_input("input your description here")
 
 def user_type(description):
-    Type = final_model.predict([token(description)])
+    Type = load_mnb.predict([token(description)])
+    prediction_proba = load_mnb.predict_proba([token(description)])
     if Type == 0:
         print ('This user is a programmer')
+        print ('The prediction probability is ', prediction_proba[0])
     elif Type == 1:
         print('This user is a gamer')
     else:
