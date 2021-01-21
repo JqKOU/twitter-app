@@ -67,10 +67,8 @@ st.subheader('Prediction')
 user_type(description)     
 
 
-
-st.write(""
-## Note
-
+st.subheader("About")
+st.write("""
 This model were trained on Twitter users' profile who posted tweets with keywords in [python, java, C++, PokemonGo, AnimalCrossing, ACNH]. 
 
 The first 3 keywords **[python, java, C++]** capture users that are more likely to be **programmers**.
@@ -79,4 +77,4 @@ The last 3 keywords **[PokemonGo, AnimalCrossing, ACNH]** captures users that ar
 
 For more detail of this app, please check: https://github.com/JqKOU/twitter-app.  
 
-"")
+""")
