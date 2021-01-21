@@ -7,7 +7,7 @@ import nltk
 
 import re
 from nltk import word_tokenize
-from nltk.corpus import stopwords
+#from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 word_lemmatizer = WordNetLemmatizer()
 
@@ -19,10 +19,10 @@ def preprocess(row):
     # filtering out tokens that are not all alphabetical
     tokens = [word for word in re.findall(r'[A-Za-z]+', ' '.join(tokens))]
     # remove all stopwords
-    no_stop = [word for word in tokens\
-               if word not in stopwords.words('english')]
+    #no_stop = [word for word in tokens\
+              # if word not in stopwords.words('english')]
     # lematizing all tokens
-    lemmatized = [word_lemmatizer.lemmatize(word) for word in no_stop]
+    lemmatized = [word_lemmatizer.lemmatize(word) for word in tokens]
     # convert tokens back to a sentense as the input for CountVectorizer later
     processed = ' '.join(lemmatized)
 
