@@ -46,11 +46,11 @@ description = st.text_input("input your description here")
 
 # Apply model to make predictions
 prediction = load_mnb.predict([token(description)])
-prediction_proba = load_mnb.predict_proba([token(description)])
+#prediction_proba = load_mnb.predict_proba([token(description)])
 
 st.subheader('Prediction')
 user_type = np.array(['Programmer','Gamer'])
 st.write(user_type[prediction])
 
-st.subheader('Prediction Probability')
-st.write(prediction_proba[prediction])
+#st.subheader('Prediction Probability')
+#st.write(prediction_proba[prediction])
