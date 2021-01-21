@@ -31,20 +31,6 @@ def token(text):
     text = ' '.join(text) # nice day
     return text
 
-# Reads in saved classification model
-load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
-
-#### APP #####
-st.write("""
-# Twitter User Type Prediction App
-
-This app predicts whether a Twitter user is a **Programmer** or a **Gamer** based on his/her user description.
-""")
-
-st.subheader("Input your Twitter Description")
-description = st.text_input("input your description here")
-Token = [token(description)]
-
 def user_type(description):
     Type = load_mnb.predict(Token)
     prediction_proba = load_mnb.predict_proba(Token)
@@ -57,6 +43,20 @@ def user_type(description):
     else:
         st.write('invalid prediction')
         st.write ('The prediction probability is NA')
+
+# Reads in saved classification model
+load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
+
+#### APP #####
+st.write("""
+# Twitter User Type Prediction App
+
+This app predicts whether a Twitter user is a **Programmer** or a **Gamer** based on the user description.
+""")
+
+st.subheader("Input your Twitter Description")
+description = st.text_input(["input the description here"])
+Token = token(description)
 
 st.subheader('Prediction')
 user_type(description)     
