@@ -4,6 +4,15 @@ import numpy as np
 import pickle
 from sklearn.naive_bayes import MultinomialNB
 
+def token(text):
+    text = text.lower()
+    text = re.sub('[^a-z]', ' ', str(text))
+    text = stemSentence(text)
+    text = nltk.word_tokenize(text)
+    text = [word for word in text if word not in swords]
+    text = ' '.join(text)
+    return text
+
 st.write("""
 # Twitter User Type Prediction App
 
@@ -19,14 +28,14 @@ Model is based on data collected from Twitter with keywords of programmer (pytho
 # Reads in saved classification model
 load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
 
-st.subheader('Input your Twitter Description')
+st.subheader("Input your Twitter Description")
 
-description = st.text_input('Input your description here:') 
-List = list(description.split())
+description = st.text_input("coding is fun")
+Token = token(description)
 
 # Apply model to make predictions
-prediction = load_mnb.predict(List)[0]
-prediction_proba = load_mnb.predict_proba(List)[0]
+prediction = load_mnb.predict(Token)
+prediction_proba = load_mnb.predict_proba(Token)
 
 st.subheader('Prediction')
 user_type = np.array(['Programmer','Gamer'])
