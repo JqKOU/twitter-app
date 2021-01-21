@@ -14,20 +14,17 @@ Data collected from Twitter using Tweepy API with keywords of programmer and gam
 [python, java, c++] and [PokemonGo, AnimalCrossing, ACNH] 
 """)
 
+# Reads in saved classification model
+load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
 
 st.subheader('Input your Twitter Description')
 
 description = st.text_input('Input your description here:') 
-
-# Reads in saved classification model
-load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
-
-if description:
-    st.write(my_model.predict(description))
+List = list(description.split(" "))
 
 # Apply model to make predictions
-prediction = load_mnb.predict(description)
-prediction_proba = load_mnb .predict_proba(description)
+prediction = load_mnb.predict(List)
+prediction_proba = load_mnb .predict_proba(List)
 
 st.subheader('Prediction')
 user_type = np.array(['Programmer','Gamer'])
