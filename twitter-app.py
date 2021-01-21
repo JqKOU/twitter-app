@@ -21,6 +21,7 @@ def stemSentence(sentence):
         stem_sentence.append(porter.stem(word))
         stem_sentence.append(" ")
     return "".join(stem_sentence)
+
 def token(text):
     text = text.lower()
     text = re.sub('[^a-z]', ' ', str(text))
