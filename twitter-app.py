@@ -5,6 +5,31 @@ import pickle
 from sklearn.naive_bayes import MultinomialNB
 import nltk
 
+from nltk.corpus import stopwords
+import re
+swords = stopwords.words("english")
+#words = set(nltk.corpus.words.words())
+
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.stem import PorterStemmer
+porter=PorterStemmer()
+def stemSentence(sentence):
+    token_words=word_tokenize(sentence)
+    token_words
+    stem_sentence=[]
+    for word in token_words:
+        stem_sentence.append(porter.stem(word))
+        stem_sentence.append(" ")
+    return "".join(stem_sentence)
+def token(text):
+    text = text.lower()
+    text = re.sub('[^a-z]', ' ', str(text))
+    text = stemSentence(text)
+    text = nltk.word_tokenize(text)
+    text = [word for word in text if word not in swords]
+    text = ' '.join(text)
+    return text
+
 st.write("""
 # Twitter User Type Prediction App
 
@@ -16,7 +41,7 @@ load_mnb = pickle.load(open('mnb_model.pkl', 'rb'))
 
 st.subheader("Input your Twitter Description")
 description = st.text_input("input your description here")
-Token = description.lower() 
+Token = token(description)
 
 # Apply model to make predictions
 prediction = load_mnb.predict([Token])
