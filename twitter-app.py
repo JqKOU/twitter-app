@@ -14,19 +14,16 @@ from nltk.stem import PorterStemmer
 porter=PorterStemmer()
 def stemSentence(sentence):
     token_words=word_tokenize(sentence)
-    token_words
     stem_sentence=[]
     for word in token_words:
         stem_sentence.append(porter.stem(word))
-        stem_sentence.append(" ")
-    return "".join(stem_sentence)
+    return stem_sentence
 
 #preprocessing
 def token(text):
     text = text.lower() #lowercase: Have a nice day! --> have a nice day!
     text = re.sub('[^a-z]', ' ', str(text)) #only keep a-z: have a nice day! --> have a nice day
-    text = stemSentence(text) #lemma: games --> game
-    text = nltk.word_tokenize(text) # have a nice day -- have, a, nice, day 
+    text = stemSentence(text) #lemma: games --> [game]
     text = [word for word in text if word not in swords] # remove stopwords: have, a, nice, day --> nice, day
     text = ' '.join(text) # nice day
     return text
@@ -60,7 +57,6 @@ This app predicts whether a Twitter user is a **Programmer** or a **Gamer** base
 st.subheader("Input the Twitter User Description")
 description = st.text_input(" ")
 
-st.write('👇 click to show/hide')
 Token = [token(description)]
 
 st.subheader('Prediction')
