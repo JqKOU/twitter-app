@@ -25,7 +25,7 @@ def token(text):
     text = re.sub('[^a-z]', ' ', str(text)) #only keep a-z: have a nice day! --> have a nice day
     text = stemSentence(text) #lemma: games --> [game]
     text = [word for word in text if word not in swords] # remove stopwords: have, a, nice, day --> nice, day
-    #text = ' '.join(text) # nice day
+    text = ' '.join(text) # nice day
     return text
 
 # prediction 
@@ -58,7 +58,7 @@ st.subheader("Input the Twitter User Description")
 description = st.text_input(" ")
 
 st.write('👇 click to show/hide')
-Token = token(description)
+Token = [token(description)]
 
 st.subheader('Prediction')
 user_type(description)     
