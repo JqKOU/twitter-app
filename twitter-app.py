@@ -25,8 +25,8 @@ def stemSentence(sentence):
 def token(text):
     text = text.lower() #lowercase: Have a nice day! --> have a nice day!
     text = re.sub('[^a-z]', ' ', str(text)) #only keep a-z: have a nice day! --> have a nice day
-    text = stemSentence(text) #lemma: games --> game
     text = nltk.word_tokenize(text) # have a nice day -- have, a, nice, day 
+    text = stemSentence(text) #lemma: games --> game
     text = [word for word in text if word not in swords] # remove stopwords: have, a, nice, day --> nice, day
     text = ' '.join(text) # nice day
     return text
