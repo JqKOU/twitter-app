@@ -29,7 +29,7 @@ def token(text):
     text = nltk.word_tokenize(text) # have a nice day -- have, a, nice, day 
     text = [word for word in text if word not in swords] # remove stopwords: have, a, nice, day --> nice, day
     text = ' '.join(text) # nice day
-    return text
+    #return text
 
 # prediction 
 def user_type(description):
