@@ -57,7 +57,6 @@ This app predicts whether a Twitter user is a **Programmer** or a **Gamer** base
 st.subheader("Input the Twitter User Description")
 description = st.text_input(" ")
 
-st.write('👇 click to show/hide')
 Token = [token(description)]
 
 st.subheader('Prediction')
